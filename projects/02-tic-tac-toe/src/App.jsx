@@ -5,16 +5,35 @@ import { Square } from "./components/Square";
 import { WinnerModal } from "./components/WinnerModal";
 import { TURNS } from "./constant";
 import { checkEndGame, checkWinner } from "./logic/board";
+import { resetGameStorage, saveGameStorage } from "./logic/storage";
 
 function App() {
   //LOS ESTADOS HAY QUE TRATARLOS SIEMPRE COMO INMUTABLES (NO SE DEBEN MODIFICAR)
 
+  //LOS "useState" NUNCA PUEDEN IR DENTRO DE UN IF
+  //LEER DEL LOCALSTORAGE ES LENTO, ES SINCRONO Y BLOQUEA
+  //creamos una funcion dentro del "useState" para recuperar los datos dentro de localStorage:
+  //guardamos en una variable los datos del item "board",
+  //hacemos que la funcion devuelva el array vacio o el valor del "localstoge"
+  //dependiendo si había algo guardado
+  const [board, setBoard] = useState(() => {
+    const boardFromStorage = window.localStorage.getItem("board");
+    return boardFromStorage
+      ? JSON.parse(boardFromStorage)
+      : Array(9).fill(null);
+  });
+
   //cambiamos el "board" para que ahora sea un estado
   //a la funcion "useState", le pasamos el estado inicial que quereamos, en este caso, el array de 9 vacio
-  const [board, setBoard] = useState(Array(9).fill(null));
+  //const [board, setBoard] = useState(Array(9).fill(null));
 
   //creamos un estado para los turnos
-  const [turn, setTurn] = useState(TURNS.X);
+  const [turn, setTurn] = useState(() => {
+    const turnFromStorage = window.localStorage.getItem("turn");
+    // devolvemos "turnFromStorage" si "turnFromStorage" tiene un valor,
+    //pero si es nulo o indefinido, devolvemos "TURNS.X"
+    return turnFromStorage ?? TURNS.X;
+  });
 
   //creamos un estado a el ganador
   const [winner, setWinner] = useState(null); //null --> no hay ganador, false --> empate
@@ -32,6 +51,8 @@ function App() {
     //cambiamos el turno
     const newTurn = turn == TURNS.X ? TURNS.O : TURNS.X;
     setTurn(newTurn);
+    //agudamos la partida
+    saveGameStorage({ board: newBoard, turn: newTurn });
     // revisamo si hay un ganador
     const newWinner = checkWinner(newBoard);
     if (newWinner) {
@@ -52,6 +73,7 @@ function App() {
     setBoard(Array(9).fill(null));
     setTurn(TURNS.X);
     setWinner(null);
+    resetGameStorage();
   };
 
   return (
