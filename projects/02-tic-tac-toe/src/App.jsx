@@ -1,42 +1,15 @@
+import confetti from "canvas-confetti";
 import { useState } from "react";
 import "./App.css";
-
-//creamos los turnos de los jugadores con su valor
-const TURNS = {
-  X: "x",
-  O: "o",
-};
-
-const Square = ({ children, isSelected, updateBoard, index }) => {
-  const className = `square ${isSelected ? "is-selected" : ""}`;
-
-  const handleClick = () => {
-    updateBoard(index);
-  };
-
-  return (
-    <div onClick={handleClick} className={className}>
-      {children}
-    </div>
-  );
-};
-
-const WINNER_COMBOS = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
-];
+import { Square } from "./components/Square";
+import { WinnerModal } from "./components/WinnerModal";
+import { TURNS } from "./constant";
+import { checkWinner } from "./logic/board";
 
 function App() {
   //LOS ESTADOS HAY QUE TRATARLOS SIEMPRE COMO INMUTABLES (NO SE DEBEN MODIFICAR)
 
   //cambiamos el "board" para que ahora sea un estado
-  //creamos un array de dos posiciones, la 1º es el "board" y la segunda es el "actualizador" del "board"
   //a la funcion "useState", le pasamos el estado inicial que quereamos, en este caso, el array de 9 vacio
   const [board, setBoard] = useState(Array(9).fill(null));
 
@@ -45,23 +18,6 @@ function App() {
 
   //creamos un estado a el ganador
   const [winner, setWinner] = useState(null); //null --> no hay ganador, false --> empate
-
-  const checkWinner = (boardToCheck) => {
-    // revisamos todas las combianaciones ganadores
-    // para ver si X u O ganó
-    for (const combo of WINNER_COMBOS) {
-      const [a, b, c] = combo;
-      if (
-        boardToCheck[a] && // 0 --> "x" u "o"
-        boardToCheck[a] === boardToCheck[b] && // 0 y 3 --> "x" y "x" u "o" y "o"
-        boardToCheck[a] === boardToCheck[c]
-      ) {
-        return boardToCheck[a];
-      }
-    }
-    //si no hay ganador
-    return null;
-  };
 
   const checkEndGame = (newBoard) => {
     //revisamos si hay un empate --> si no hay más espacio vacios en el tablero
@@ -89,6 +45,7 @@ function App() {
       //El alert se ejecuta antes que el "setWinner" porque el "setWinner" no es sincrono
       setWinner(newWinner); //actualizamos el estado
       //alert(`El ganador es ${newWinner}`);
+      confetti();
     }
     //chequeamos si el game tiene ganador
     else if (checkEndGame(newBoard)) {
@@ -130,20 +87,7 @@ function App() {
         <Square isSelected={turn == TURNS.X}>{TURNS.X}</Square>
         <Square isSelected={turn == TURNS.O}>{TURNS.O}</Square>
       </section>
-      {/* Creamos un renderizado condicional para cuando ha acabado el game*/}
-      {winner !== null && (
-        <section className="winner">
-          <div className="text">
-            <h2>{winner === false ? "Empate" : "Ganó:"}</h2>
-            <header className="win">
-              {winner && <Square>{winner}</Square>}
-            </header>
-            <footer>
-              <button onClick={resetGame}>Empezar de nuevo</button>
-            </footer>
-          </div>
-        </section>
-      )}
+      <WinnerModal resetGame={resetGame} winner={winner} />
     </main>
   );
 }
