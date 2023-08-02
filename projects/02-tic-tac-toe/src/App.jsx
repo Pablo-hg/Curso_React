@@ -4,7 +4,7 @@ import "./App.css";
 import { Square } from "./components/Square";
 import { WinnerModal } from "./components/WinnerModal";
 import { TURNS } from "./constant";
-import { checkWinner } from "./logic/board";
+import { checkEndGame, checkWinner } from "./logic/board";
 
 function App() {
   //LOS ESTADOS HAY QUE TRATARLOS SIEMPRE COMO INMUTABLES (NO SE DEBEN MODIFICAR)
@@ -18,12 +18,6 @@ function App() {
 
   //creamos un estado a el ganador
   const [winner, setWinner] = useState(null); //null --> no hay ganador, false --> empate
-
-  const checkEndGame = (newBoard) => {
-    //revisamos si hay un empate --> si no hay más espacio vacios en el tablero
-    //array.every() --> si todas las posiciones del array
-    return newBoard.every((square) => square !== null); // si todas los "square" son "x" u "o"
-  };
 
   //actualizamos el tablero estableciendo el nuevo turno
   const updateBoard = (index) => {

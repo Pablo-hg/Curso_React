@@ -1,7 +1,7 @@
 //creamos los turnos de los jugadores con su valor
 export const TURNS = {
-  X: "x",
-  O: "o",
+  X: "❌",
+  O: "⚪",
 };
 
 export const WINNER_COMBOS = [
