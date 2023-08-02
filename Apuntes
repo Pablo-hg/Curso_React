@@ -1,5 +1,6 @@
 ¿QUÉ ES UN HOOK?
-Es una función especial que te permite agregar características de React a componentes de función (también conocidos como componentes funcionales). Ofrecen una forma más sencilla y clara de manejar el estado y otras características de React en componentes que no son clases.
+Es una función especial que te permite agregar características de React a componentes de función (también conocidos como componentes funcionales). 
+Ofrecen una forma más sencilla y clara de manejar el estado y otras características de React en componentes que no son clases.
 Los hooks están diseñados para resolver el problema de compartir lógica entre componentes y hacerla más fácil de reutilizar
 
 ALGUNOS DE LOS HOOKS MÁS COMUNES
