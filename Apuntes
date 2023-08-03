@@ -6,5 +6,6 @@ Los hooks están diseñados para resolver el problema de compartir lógica entre
 ALGUNOS DE LOS HOOKS MÁS COMUNES
     'useState' ---> Permite agregar estado local a un componente funcional,
                 lo que le permite reaccionar a cambios y actualizar la interfaz de usuario.
-    'useEffect' --> Permite realizar efectos secundarios en el componente, como suscripciones a eventos,
-                llamadas a API o limpieza de recursos cuando el componente se monta, actualiza o desmonta.
+    'useEffect' --> Permite ejecutar código arbitrario (cóigo cualquiera) cuando el componente se monta 
+                    en el DOM y cada vez que cambia las dependencias que le digamos.
+
