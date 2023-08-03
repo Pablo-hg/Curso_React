@@ -51,7 +51,7 @@ function App() {
     //cambiamos el turno
     const newTurn = turn == TURNS.X ? TURNS.O : TURNS.X;
     setTurn(newTurn);
-    //agudamos la partida
+    //guardamos la partida
     saveGameStorage({ board: newBoard, turn: newTurn });
     // revisamo si hay un ganador
     const newWinner = checkWinner(newBoard);
@@ -67,6 +67,25 @@ function App() {
       setWinner(false);
     }
   };
+
+  //se ejecuta cada vez que renderizamos el componente
+  /*useEffect(() => {
+    console.log("hola que tal");
+  });*/
+
+  //si dejamos el array vacio "[]", solo se ejecutará cuando se renderize por 1º vez,
+  //si ponemos dentro del array solo un estado (como por ejemplo winner), se ejecutará
+  //siempre que cambie dicho estado
+  /*useEffect(() => {
+    console.log("hola que tal");
+  }, [winner]);*/
+
+  //cuando tengas un nuevo "turn" o un nuevo "board" (cuando cambie dichos estados...)
+  //ejecutamos la funcion que guarada los datos en el "localStorage"
+  /*useEffect(() => {
+    //guardamos la partida
+    saveGameStorage({ board: newBoard, turn: newTurn });
+  }, [turn, board]);*/
 
   //RESETEAMOS EL GAME
   const resetGame = () => {
