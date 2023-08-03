@@ -8,6 +8,6 @@
 
 -Creamos una logica para saber cuando se ha acabado la partida o cuando hay ganador
 
-![Imagen tablero](Tic-tac-toe-1.png)
+<img src="Tic-tac-toe-1.png" alt="Imagen tablero" width="200">
 ![Imagen Partida](Tic-tac-toe-2.png)
 ![Imagen Final](Tic-tac-toe-3.png)
