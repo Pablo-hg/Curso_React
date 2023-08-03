@@ -1,3 +1,3 @@
-# 1º PRÁCTICA DE REACT EN LA QUE CREAMOS UN COMPOENNTE DE TWITTER
+# 1º PRÁCTICA DE REACT EN LA QUE CREAMOS UN COMPONENTE DE TWITTER
 
-[![Imagen cokmpoennte React](https://ejemplo.com/imagen.jpg)](https://ejemplo.com)
+[![TwitterFollowCard](componenteTwitter.png)
