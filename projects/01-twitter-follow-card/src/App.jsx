@@ -3,13 +3,13 @@ import { TwitterFollowCard } from "./assets/TwitterFollowCard";
 
 const users = [
   {
-    userName: "midudev",
-    name: "Miguel Ángel Durán",
+    userName: "juacho",
+    name: "Juan Perez",
     isFollowing: true,
   },
   {
-    userName: "pheralb",
-    name: "Pablo H.",
+    userName: "pepito",
+    name: "Pepito Fernandez",
     isFollowing: false,
   },
   {
