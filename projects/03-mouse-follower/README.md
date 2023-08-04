@@ -9,3 +9,5 @@
 -Hacemos que el "useEffect" devuelva un mensaje de limpieza y elimina el listener del puntero
 
 -Creamos un boton dentro del main que renderiza o no el componente "FollowMouse"
+
+<img src="imagen1.png" alt="Imagen Desarrollo1" width="200"> <img src="imagen2.png" alt="Imagen Desarrollo1" width="200"> <img src="imagen3.png" alt="Imagen Desarrollo1" width="200"> <img src="imagen4.png" alt="Imagen Desarrollo1" width="200">
