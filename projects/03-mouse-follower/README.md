@@ -1,8 +1,11 @@
-# React + Vite
+# 3º Seguimineto del puntero
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+-Usamos el "useEffect" para ejecutar el "handleMove" cuando el estado del "enabled" cambia
 
-Currently, two official plugins are available:
+-EL "handleMove" recupera las posiciones del puntero y establece dichas coordenas en el estado de la posicion (position)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-Dependiendo del estado del "enable" ejecutamos un listener para el puntero cuando se mueve
+
+-Hacemos que el "useEffect" devuelva un mensaje de limpieza y elimina el listener del puntero
+
+-Creamos un boton dentro del main que renderiza o no el componente "FollowMouse"
