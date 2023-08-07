@@ -1,6 +1,8 @@
 <div align="center">
 
 # Aprendiendo React ⚛️
+Curso para aprender **React** basado en proyectos.
+Curso de aprendizaje de **React** basado en proyectos.
 
 ## ⌨️ Proyectos de React con código
 
