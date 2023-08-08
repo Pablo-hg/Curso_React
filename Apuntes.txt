@@ -11,10 +11,13 @@ ALGUNOS DE LOS HOOKS MÁS COMUNES
                 "useEffect" recibe dos parámetros (el 2º es opcional):
                 1º Código para ejecutar
                 2º Lista de las dependencias --> tiene que ser un array
-                Ejemplo: useEffect(codeToExecute, listOfDependencies)
-                const [estado, setEstado] = useState(false); 
-                useEffect(() => {
-                    console.log("hola que tal");
-                },[estado]); --> El código que imprime un mensaje en consola se ejecutará cuando el estado "estado" cambie de valor
-                            
+                Ejemplo: 
+                    useEffect(codeToExecute, listOfDependencies);
+                Ejemplo práctico:
+                    const [estado, setEstado] = useState(false); 
+                    useEffect(() => {
+                        console.log("hola que tal");
+                    },[estado]); 
+                El código que imprime un mensaje en consola se ejecutará cuando el estado "estado" cambie de valor
+                                
      
