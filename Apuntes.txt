@@ -19,5 +19,19 @@ ALGUNOS DE LOS HOOKS MÁS COMUNES
                         console.log("hola que tal");
                     },[estado]); 
                 El código que imprime un mensaje en consola se ejecutará cuando el estado "estado" cambie de valor
+
+
+PASOS A SEGUIR PARA INICIALIZAR TU MISMO UN PROYECTO DE REACT
+    > npm create vite@latest
+    > nombre-del-proyecto
+    > seleccionamos "Vanilla"
+    > seleccionamos "Javascript"
+    > accedemos a la traiz del proyecto (cd nombre-del-proyecto)
+    > instalamos el plugin de react (npm install @vitejs/plugin-react -E)
+    > accedemos al archivo "package.json" y comprobamos las dependenciasinstaladas
+    > instalamos las dependencias de "react" y "react-dom" (npm install react react-dom -E)   
+    > creamos un archivo para la configuración de "vite" en la raiz del proyecto (vite.config.js)
+    > importamos el plugin que acabamos de instalar y lo exportamos (contenido fichero vite-config.js)
+
                                 
      
