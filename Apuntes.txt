@@ -32,6 +32,12 @@ PASOS A SEGUIR PARA INICIALIZAR TU MISMO UN PROYECTO DE REACT
     > instalamos las dependencias de "react" y "react-dom" (npm install react react-dom -E)   
     > creamos un archivo para la configuración de "vite" en la raiz del proyecto (vite.config.js)
     > importamos el plugin que acabamos de instalar y lo exportamos (contenido fichero vite-config.js)
+    > renombramos el archivo "main.js" por "main.jsx" (cambiamos el nombre de dicho archivo en el index.html)
+    > añadimos las 3 lineas principales en el archivo "main.jsx"
+    > ejecutamos el "npm run dev" y ya se debe´ria de ver algo
+    > instalamos el "eslint" (npm install standard -D) para mejorar el formato del codigo
+    > añadimos el "eslint" en el "package.json" ("eslintConfig": {"extends": "./node_modules/standard/eslintrc.json"})
+
 
                                 
      
