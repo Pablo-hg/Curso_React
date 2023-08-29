@@ -3,11 +3,11 @@ Es una función especial que te permite agregar características de React a comp
 Los hooks están diseñados para resolver el problema de compartir lógica entre componentes y hacerla más fácil de reutilizar
 
 ALGUNOS DE LOS HOOKS MÁS COMUNES
-    'useState' ---> Permite agregar estado local a un componente funcional, lo que le permite reaccionar a cambios y actualizar la interfaz de usuario.
+    > 'useState' ---> Permite agregar estado local a un componente funcional, lo que le permite reaccionar a cambios y actualizar la interfaz de usuario.
                 Ejemplo: const [estado, setEstado] = useState(false); 
                 const [nombre, establecedor del estado] = useState(valor inicial del estado)
 
-    'useEffect' --> Permite realizar efectos secundarios en el componente, como suscripciones a eventos, llamadas a API o limpieza de recursos cuando el componente se monta, actualiza o desmonta.
+    > 'useEffect' --> Permite realizar efectos secundarios en el componente, como suscripciones a eventos, llamadas a API o limpieza de recursos cuando el componente se monta, actualiza o desmonta.
                 "useEffect" recibe dos parámetros (el 2º es opcional):
                 1º Código para ejecutar
                 2º Lista de las dependencias --> tiene que ser un array
@@ -37,6 +37,19 @@ PASOS A SEGUIR PARA INICIALIZAR TU MISMO UN PROYECTO DE REACT
     > ejecutamos el "npm run dev" y ya se debe´ria de ver algo
     > instalamos el "eslint" (npm install standard -D) para mejorar el formato del codigo
     > añadimos el "eslint" en el "package.json" ("eslintConfig": {"extends": "./node_modules/standard/eslintrc.json"})
+
+
+NUEVAS FUNCIONES ESPECIALES DE JAVASCRIPT
+    > fetch() --> Funcion que se utiliza para realizar solicitudes a una URL. 
+        Devuelve una "promesa" --> objetos que representan valores que pueden estar disponibles ahora, en el futuro o nunca.
+        Una promesa tiene tres estados posibles:
+            -Pending (pendiente): Cuando se crea una promesa, inicialmente está en estado pendiente. Esto significa que la operación asincrónica aún no se ha completado ni ha fallado.
+            -Fulfilled (cumplida): Si la operación asincrónica se completa con éxito, la promesa pasa al estado cumplido. Esto significa que se ha obtenido el resultado deseado y la promesa ahora contiene ese resultado.
+            -Rejected (rechazada): Si la operación asincrónica falla, la promesa pasa al estado rechazado. Esto indica que ocurrió un error y la promesa contiene información sobre ese error.
+        El flujo de control en una promesa se maneja a través de los métodos ".then()" y ".catch()", que se pueden encadenar después de la creación de la promesa. 
+    > .then() --> es un método que permite encadenar acciones despues de que una accion se complete
+    > .catch() --> es un método que permite manejar acciones en caso de obtener error en los datos
+    
 
 
                                 
