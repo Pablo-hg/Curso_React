@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import './App.css';
+import { getRandomFact } from "./services/fact";
 
-const CAT_ENDPOINT_RANDOM_FACT = 'https://catfact.ninja/fact'
+
 const CAT_PREFIX_IMAGE_URL = 'https://cataas.com';
 
 export function App () {
@@ -9,18 +10,13 @@ export function App () {
     const [fact, setFact] = useState()
     const [imageURL, setimageURL] = useState()
 
-    const getRandomFact = () => {
-        fetch(CAT_ENDPOINT_RANDOM_FACT)  // Realiza una solicitud GET a la URL proporcionada
-            .then(res => res.json())  // Convierte la respuesta ("res") en formato JSON
-            .then(data => { //del objeto "data" (que son los datoa del json), accedemos al "fact"
-                const { fact } = data // del "data" recuperamos el hecho
-                setFact(fact) // establecemos el "fact"
-            })  
-    }
+ 
 
     //Al dejar el array de dependencias vacio, hacemos que solo se ejecute la 1º vez que renderiza el componente
     //EFECTO QUE RECUPERA LA CITA AL CARGAR LA PÁGINA
-    useEffect( getRandomFact, []);
+    useEffect(() => {
+        getRandomFact().then(setFact)
+    }, []);
 
     //EFECTO QUE RECUPERA LA IMAGEN CADA VEZ QUE TENEMOS UNA CITA NUEVA
     //cada vez que cambia el "fact" (dependencias)....
@@ -39,8 +35,9 @@ export function App () {
     }, [fact])
 
     //funcion que recupera una cita al pulsar el boton
-    const handleClick = () => {
-       getRandomFact()
+    const handleClick = async () => {
+       const newFact = await getRandomFact()
+       setFact(newFact)
     }
     
 //{fact &&  <p>{fact}</p>} --> si "fact" se ha renderizado, renderizamos "fact" dentro de una etiqueta <p>
