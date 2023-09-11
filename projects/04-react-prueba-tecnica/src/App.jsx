@@ -9,16 +9,18 @@ export function App () {
     const [fact, setFact] = useState()
     const [imageURL, setimageURL] = useState()
 
-    //Al dejar el array de dependencias vacio, hacemos que solo se ejecute la 1º vez que renderiza el componente
-    //EFECTO QUE RECUPERA LA CITA AL CARGAR LA PÁGINA
-    useEffect(() => {
+    const getRandomFact = () => {
         fetch(CAT_ENDPOINT_RANDOM_FACT)  // Realiza una solicitud GET a la URL proporcionada
             .then(res => res.json())  // Convierte la respuesta ("res") en formato JSON
             .then(data => { //del objeto "data" (que son los datoa del json), accedemos al "fact"
                 const { fact } = data // del "data" recuperamos el hecho
                 setFact(fact) // establecemos el "fact"
             })  
-    }, []);
+    }
+
+    //Al dejar el array de dependencias vacio, hacemos que solo se ejecute la 1º vez que renderiza el componente
+    //EFECTO QUE RECUPERA LA CITA AL CARGAR LA PÁGINA
+    useEffect( getRandomFact, []);
 
     //EFECTO QUE RECUPERA LA IMAGEN CADA VEZ QUE TENEMOS UNA CITA NUEVA
     //cada vez que cambia el "fact" (dependencias)....
@@ -38,12 +40,7 @@ export function App () {
 
     //funcion que recupera una cita al pulsar el boton
     const handleClick = () => {
-        fetch(CAT_ENDPOINT_RANDOM_FACT)  
-            .then(res => res.json()) 
-            .then(data => { 
-                const { fact } = data 
-                setFact(fact) 
-            })  
+       getRandomFact()
     }
     
 //{fact &&  <p>{fact}</p>} --> si "fact" se ha renderizado, renderizamos "fact" dentro de una etiqueta <p>
