@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import './App.css';
 
 const CAT_ENDPOINT_RANDOM_FACT = 'https://catfact.ninja/fact'
+const CAT_PREFIX_IMAGE_URL = 'https://cataas.com';
+
 export function App () {
 
     const [fact, setFact] = useState()
@@ -30,17 +32,29 @@ export function App () {
         .then(res => res.json())
         .then(response => {
             const { url } =  response
-            setimageURL(`https://cataas.com${url}`)
+            setimageURL(url)
         })
     }, [fact])
+
+    //funcion que recupera una cita al pulsar el boton
+    const handleClick = () => {
+        fetch(CAT_ENDPOINT_RANDOM_FACT)  
+            .then(res => res.json()) 
+            .then(data => { 
+                const { fact } = data 
+                setFact(fact) 
+            })  
+    }
     
 //{fact &&  <p>{fact}</p>} --> si "fact" se ha renderizado, renderizamos "fact" dentro de una etiqueta <p>
     return (
         <main>
             <h1>App de Gatitos</h1>
+
+            <button onClick={handleClick}>Get new fact</button>
             {fact &&  <p>{fact}</p>}
-            {imageURL &&  <img src={imageURL} alt={`Imagen extraida usando las 3º primeras palabras de ${fact}`} /> }
+            {imageURL &&  <img src={`${CAT_PREFIX_IMAGE_URL}${imageURL}`}
+             alt={`Imagen extraida usando las 3º primeras palabras de ${fact}`} /> }
         </main>
-        
     )
 }
