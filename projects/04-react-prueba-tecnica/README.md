@@ -11,4 +11,4 @@ APIs:
 - Muestra una imagen de un gato con las palabras
 
 
-<img src="Imagen.png" alt="Imagen Gato con 3 palabras" width="200">
+<img src="Imagen.png" alt="Imagen Gato con 3 palabras" width="500">
