@@ -5,17 +5,10 @@ import { getRandomFact } from "./services/fact";
 
 const CAT_PREFIX_IMAGE_URL = 'https://cataas.com';
 
-export function App () {
-
-    const [fact, setFact] = useState()
+//Para crear un Custom Hooks lo que debemos hacer es crear una funcion,
+//que empieze por "use" y siga por lo que va a hacer
+function useCatImage({fact}) {
     const [imageURL, setimageURL] = useState()
-
-
-    //Al dejar el array de dependencias vacio, hacemos que solo se ejecute la 1º vez que renderiza el componente
-    //EFECTO QUE RECUPERA LA CITA AL CARGAR LA PÁGINA
-    useEffect(() => {
-        getRandomFact().then(newFact => setFact(newFact))// es lo mismo que getRandomFact().then(setFact) 
-    }, []);
 
     //EFECTO QUE RECUPERA LA IMAGEN CADA VEZ QUE TENEMOS UNA CITA NUEVA
     //cada vez que cambia el "fact" (dependencias)....
@@ -32,6 +25,20 @@ export function App () {
             setimageURL(url)
         })
     }, [fact])
+    return {imageURL}
+} // devuelve {imageUrl: 'htpps://...'}
+
+export function App () {
+
+    const [fact, setFact] = useState()
+    const {imageURL} = useCatImage({fact})
+
+    //Al dejar el array de dependencias vacio, hacemos que solo se ejecute la 1º vez que renderiza el componente
+    //EFECTO QUE RECUPERA LA CITA AL CARGAR LA PÁGINA
+    useEffect(() => {
+        getRandomFact().then(newFact => setFact(newFact))// es lo mismo que getRandomFact().then(setFact) 
+    }, []);
+
 
     //funcion que recupera una cita al pulsar el boton
     const handleClick = async () => {
