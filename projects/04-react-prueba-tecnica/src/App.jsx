@@ -10,12 +10,11 @@ export function App () {
     const [fact, setFact] = useState()
     const [imageURL, setimageURL] = useState()
 
- 
 
     //Al dejar el array de dependencias vacio, hacemos que solo se ejecute la 1º vez que renderiza el componente
     //EFECTO QUE RECUPERA LA CITA AL CARGAR LA PÁGINA
     useEffect(() => {
-        getRandomFact().then(setFact)
+        getRandomFact().then(newFact => setFact(newFact))// es lo mismo que getRandomFact().then(setFact) 
     }, []);
 
     //EFECTO QUE RECUPERA LA IMAGEN CADA VEZ QUE TENEMOS UNA CITA NUEVA
