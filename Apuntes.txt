@@ -20,6 +20,7 @@ ALGUNOS DE LOS HOOKS MÁS COMUNES
                         console.log("hola que tal");
                     },[estado]); 
                 El código que imprime un mensaje en consola se ejecutará cuando el estado "estado" cambie de valor
+    *Cuando hagas un Useeffect preguntate: "¿este useffect realemnte lo podría separar en un custom hook?"
 
 
 PASOS A SEGUIR PARA INICIALIZAR TU MISMO UN PROYECTO DE REACT
