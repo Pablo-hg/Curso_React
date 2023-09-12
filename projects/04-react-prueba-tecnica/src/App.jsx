@@ -1,26 +1,17 @@
-import { useEffect, useState } from "react";
-import './App.css';
-import { useCatImage } from "./hooks/useCatImage";
-import { getRandomFact } from "./services/fact";
 
-const CAT_PREFIX_IMAGE_URL = 'https://cataas.com';
+import './App.css';
+import { useCatFact } from './hooks/useCatFact.js';
+import { useCatImage } from './hooks/useCatImage.js';
+
+
 
 export function App () {
-
-    const [fact, setFact] = useState()
+    const {fact, refresfact} = useCatFact()
     const {imageURL} = useCatImage({fact})
-
-    //Al dejar el array de dependencias vacio, hacemos que solo se ejecute la 1º vez que renderiza el componente
-    //EFECTO QUE RECUPERA LA CITA AL CARGAR LA PÁGINA
-    useEffect(() => {
-        getRandomFact().then(newFact => setFact(newFact))// es lo mismo que getRandomFact().then(setFact) 
-    }, []);
-
 
     //funcion que recupera una cita al pulsar el boton
     const handleClick = async () => {
-       const newFact = await getRandomFact()
-       setFact(newFact)
+       refresfact()
     }
     
 //{fact &&  <p>{fact}</p>} --> si "fact" se ha renderizado, renderizamos "fact" dentro de una etiqueta <p>
@@ -30,8 +21,9 @@ export function App () {
 
             <button onClick={handleClick}>Get new fact</button>
             {fact &&  <p>{fact}</p>}
-            {imageURL &&  <img src={`${CAT_PREFIX_IMAGE_URL}${imageURL}`}
+            {imageURL &&  <img src={imageURL}
              alt={`Imagen extraida usando las 3º primeras palabras de ${fact}`} /> }
+
         </main>
     )
 }
