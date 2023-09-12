@@ -51,6 +51,14 @@ NUEVAS FUNCIONES ESPECIALES DE JAVASCRIPT
         El flujo de control en una promesa se maneja a través de los métodos ".then()" y ".catch()", que se pueden encadenar después de la creación de la promesa. 
     > .then() --> es un método que permite encadenar acciones despues de que una accion se complete
     > .catch() --> es un método que permite manejar acciones en caso de obtener error en los datos
+
+
+HACER TESTING DEL PROYECTO
+    > ejecutamos "npm init playwright@latest" dentro del proyecto
+    > seleccionamos "Javascript"
+    > Where to put your end-to-end tests? --> tests
+    > Add a GitHub Actions workflow? --> false
+    > Install Playwright browsers (can be done manually via 'npx playwright install')? --> true
     
 
 
