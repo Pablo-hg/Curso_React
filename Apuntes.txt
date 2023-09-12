@@ -59,6 +59,8 @@ HACER TESTING DEL PROYECTO
     > Where to put your end-to-end tests? --> tests
     > Add a GitHub Actions workflow? --> false
     > Install Playwright browsers (can be done manually via 'npx playwright install')? --> true
+    > modificar el archivo "example.spec.js" para que haga las comprobaciones
+    > ejecutar el comando "px playwright test" para ejecutar el testing
     
 
 
