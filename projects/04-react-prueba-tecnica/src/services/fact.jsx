@@ -9,7 +9,7 @@ const CAT_ENDPOINT_RANDOM_FACT = 'https://catfact.ninja/fact'
         })  
 }*/
 
-//ES LOMISMO QUE LO ANTERIOR PERO CON ASYNC
+//ES LO MISMO QUE LO ANTERIOR PERO CON ASYNC
 export const getRandomFact = async () => {
     const res = await fetch(CAT_ENDPOINT_RANDOM_FACT) // Realiza una solicitud GET a la URL proporcionada
     const data = await res.json() // del "data" recuperamos el hecho
